@@ -1,25 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import React from 'react';
+import Home from './pages/Home';
+import SayUseState from './components/SayUseState';
+import HandleObjState from './components/HandleObjState';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Home fromParent={'컴포넌트속성전달'}>
+        <article>
+          <h1>컴포넌트 내부 작성</h1>
+          <p>children으로 동적으로 node를 전달해 생성한다</p>
+        </article>
+      </Home>
+      <SayUseState />
+      <HandleObjState />
     </div>
   );
-}
+};
 
 export default App;
