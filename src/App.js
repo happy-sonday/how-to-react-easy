@@ -1,13 +1,16 @@
 import './App.css';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Home from './pages/Home';
 import SayUseState from './components/SayUseState';
 import HandleObjState from './components/HandleObjState';
 import EventPractice from './components/EventPractice';
 import ListIterable from './components/ListIterable';
+import UseEffectPractice from './components/UseEffectPractice';
 
 const App = () => {
+  const [visible, setVisible] = useState(false);
+
   return (
     <div>
       <Home fromParent={'컴포넌트속성전달'}>
@@ -20,6 +23,11 @@ const App = () => {
       <HandleObjState />
       <EventPractice />
       <ListIterable />
+
+      <button onClick={() => setVisible(!visible)}>
+        {visible ? '숨기기' : '보이기'}
+      </button>
+      {visible && <UseEffectPractice />}
     </div>
   );
 };

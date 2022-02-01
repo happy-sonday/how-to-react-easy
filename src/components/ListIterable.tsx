@@ -31,6 +31,11 @@ const ListIterable = () => {
       addUser();
     }
   };
+
+  //NOTE: filter항목을 이용해 not 동등연산자를 통해 필터링된 새로운 배열값을 set한다.
+  const onRemove = (userId: number) => {
+    setUsers(users.filter((user) => user.id !== userId));
+  };
   return (
     <>
       <h1>Iterable CRUD</h1>
@@ -42,7 +47,10 @@ const ListIterable = () => {
       />
       <button onClick={addUser}>유저 추가</button>
       {users.map((user) => (
-        <li key={user.id}>{user.text}</li>
+        <div style={{ display: 'flex' }}>
+          <li key={user.id}>{user.text}</li>
+          <button onClick={() => onRemove(user.id)}>삭제</button>
+        </div>
       ))}
     </>
   );
