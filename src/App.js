@@ -4,6 +4,7 @@ import React from 'react';
 import Home from './pages/Home';
 import SayUseState from './components/SayUseState';
 import HandleObjState from './components/HandleObjState';
+import EventPractice from './components/EventPractice';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       </Home>
       <SayUseState />
       <HandleObjState />
+      <EventPractice />
     </div>
   );
 };
