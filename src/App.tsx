@@ -15,6 +15,25 @@ import TodoInsert from './components/todo/TodoInsert';
 import TodoList from './components/todo/TodoList';
 
 const App = () => {
+  //todo 기본 데이터
+  const [todos, setTodos] = useState([
+    {
+      id: 1,
+      text: '리액트 기초',
+      checked: true,
+    },
+    {
+      id: 2,
+      text: '컴포넌트 스타일',
+      checked: true,
+    },
+    {
+      id: 3,
+      text: '최적화',
+      checked: false,
+    },
+  ]);
+
   const [visible, setVisible] = useState(false);
 
   return (
@@ -40,7 +59,7 @@ const App = () => {
       <UseMemoAVG />
       <TodoTemp>
         <TodoInsert />
-        <TodoList />
+        <TodoList todos={todos} />
       </TodoTemp>
     </div>
   );

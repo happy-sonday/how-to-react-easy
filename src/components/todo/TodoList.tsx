@@ -2,12 +2,12 @@ import React from 'react';
 import '../../sass/TodoList.scss';
 import TodoItem from './TodoItem';
 
-const TodoList = () => {
+const TodoList = (props: any) => {
   return (
     <div className='todo-list'>
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
+      {props.todos.map((todo: any) => (
+        <TodoItem todo={todo} />
+      ))}
     </div>
   );
 };
