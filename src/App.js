@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import SayUseState from './components/SayUseState';
 import HandleObjState from './components/HandleObjState';
 import EventPractice from './components/EventPractice';
+import ListIterable from './components/ListIterable';
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
       <SayUseState />
       <HandleObjState />
       <EventPractice />
+      <ListIterable />
     </div>
   );
 };
