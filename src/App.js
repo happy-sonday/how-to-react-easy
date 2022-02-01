@@ -7,6 +7,9 @@ import HandleObjState from './components/HandleObjState';
 import EventPractice from './components/EventPractice';
 import ListIterable from './components/ListIterable';
 import UseEffectPractice from './components/UseEffectPractice';
+import UseReducerPractice from './components/UseReducerPractice';
+import UserReducerInput from './components/UserReducerInput';
+import UseMemoAVG from './components/UseMemoAVG';
 
 const App = () => {
   const [visible, setVisible] = useState(false);
@@ -28,6 +31,10 @@ const App = () => {
         {visible ? '숨기기' : '보이기'}
       </button>
       {visible && <UseEffectPractice />}
+
+      <UseReducerPractice />
+      <UserReducerInput />
+      <UseMemoAVG />
     </div>
   );
 };
