@@ -1,0 +1,63 @@
+.todo-item {
+  padding: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-bottom: 1px solid #999;
+}
+
+.todo-item:nth-child(even) {
+  background-color: #dee2e6;
+}
+
+.todo-item .checkbox {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.todo-item .checkbox svg {
+  font-size: 1.5rem;
+}
+
+.todo-item .checkbox .text {
+  margin-left: 0.5rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.todo-item .checkbox.checked svg {
+  color: #22b8cf;
+}
+
+.todo-item .checkbox.checked .text {
+  color: #adb5db;
+  text-decoration: line-through;
+}
+
+.todo-item .remove {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.5rem;
+  color: #ff6b6b;
+  cursor: pointer;
+}
+
+.todo-item .remove:hover {
+  color: #ff8787;
+}

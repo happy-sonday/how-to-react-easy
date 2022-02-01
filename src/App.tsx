@@ -10,6 +10,9 @@ import UseEffectPractice from './components/UseEffectPractice';
 import UseReducerPractice from './components/UseReducerPractice';
 import UserReducerInput from './components/UserReducerInput';
 import UseMemoAVG from './components/UseMemoAVG';
+import TodoTemp from './pages/TodoTemp';
+import TodoInsert from './components/todo/TodoInsert';
+import TodoList from './components/todo/TodoList';
 
 const App = () => {
   const [visible, setVisible] = useState(false);
@@ -35,6 +38,10 @@ const App = () => {
       <UseReducerPractice />
       <UserReducerInput />
       <UseMemoAVG />
+      <TodoTemp>
+        <TodoInsert />
+        <TodoList />
+      </TodoTemp>
     </div>
   );
 };

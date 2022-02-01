@@ -1,0 +1,44 @@
+.todo-insert {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #495057;
+}
+
+.todo-insert input {
+  background-color: transparent;
+  outline: none;
+  padding: 0.5rem;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #fff;
+  border: none;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.todo-insert input::-webkit-input-placeholder {
+  color: #dee2e6;
+}
+
+.todo-insert input:-ms-input-placeholder {
+  color: #dee2e6;
+}
+
+.todo-insert input::-ms-input-placeholder {
+  color: #dee2e6;
+}
+
+.todo-insert input::placeholder {
+  color: #dee2e6;
+}
+
+.todo-insert button {
+  background-color: none;
+  outline: none;
+  border: none;
+  background-color: #868e96;
+  color: #fff;
+  padding: 16px;
+}

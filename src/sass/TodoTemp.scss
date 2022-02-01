@@ -1,0 +1,15 @@
+.todo-template {
+  width: 512px;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  .app-title {
+    background-color: #22b8cf;
+    color: #fff;
+    height: 64px;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
