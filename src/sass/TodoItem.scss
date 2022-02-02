@@ -1,9 +1,10 @@
-.todo-item {
+.todo-item-virtualized {
   padding: 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #999;
+  box-sizing: border-box;
 
   &:nth-child(even) {
     background-color: #dee2e6;
