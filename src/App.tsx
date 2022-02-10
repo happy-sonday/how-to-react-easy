@@ -13,6 +13,8 @@ import UseMemoAVG from './components/UseMemoAVG';
 import TodoTemp from './pages/TodoTemp';
 import TodoInsert from './components/todo/TodoInsert';
 import TodoList from './components/todo/TodoList';
+import HighLight from './components/HighLight';
+import ImmerPractice from './components/ImmerPractice';
 
 const createBulkItems = () => {
   const array = [];
@@ -116,6 +118,9 @@ const App = () => {
         <TodoInsert onInsert={onInsert} />
         <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
       </TodoTemp>
+
+      {/* <HighLight /> */}
+      <ImmerPractice />
     </div>
   );
 };
