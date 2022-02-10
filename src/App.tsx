@@ -15,6 +15,9 @@ import TodoInsert from './components/todo/TodoInsert';
 import TodoList from './components/todo/TodoList';
 import HighLight from './components/HighLight';
 import ImmerPractice from './components/ImmerPractice';
+import { Route, Routes } from 'react-router-dom';
+import About from './components/spa-router/About';
+import SPAHome from './components/spa-router/SPAHome';
 
 const createBulkItems = () => {
   const array = [];
@@ -121,6 +124,10 @@ const App = () => {
 
       {/* <HighLight /> */}
       <ImmerPractice />
+      <Routes>
+        <Route path='/home' element={<SPAHome />} />
+        <Route path='/about' element={<About />} />
+      </Routes>
     </div>
   );
 };
