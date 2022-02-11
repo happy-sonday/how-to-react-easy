@@ -18,6 +18,7 @@ import ImmerPractice from './components/ImmerPractice';
 import { Route, Routes } from 'react-router-dom';
 import About from './components/spa-router/About';
 import SPAHome from './components/spa-router/SPAHome';
+import Profile from './components/spa-router/Profile';
 
 const createBulkItems = () => {
   const array = [];
@@ -127,6 +128,8 @@ const App = () => {
       <Routes>
         <Route path='/home' element={<SPAHome />} />
         <Route path='/about' element={<About />} />
+        {/* NOTE: 해당컴포넌트 useParams로 parameter의 value값에 접근할 수 있다. */}
+        <Route path='/profile/:username' element={<Profile />} />
       </Routes>
     </div>
   );
