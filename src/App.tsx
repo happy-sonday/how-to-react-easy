@@ -21,6 +21,7 @@ import SPAHome from './components/spa-router/SPAHome';
 import Articles from './components/spa-router/Articles';
 import ArticleDetail from './components/spa-router/ArticleDetail';
 import Layout from './components/spa-router/Layout';
+import NotFound from './components/spa-router/NotFound';
 
 const createBulkItems = () => {
   const array = [];
@@ -135,6 +136,8 @@ const App = () => {
         <Route path='/articles' element={<Articles />}>
           <Route path=':id' element={<ArticleDetail />} />
         </Route>
+        {/* NOTE: 없는페이지 라우트 설정 */}
+        <Route path='*' element={<NotFound />} />
 
         {/*  <Route path='/articles' element={<Articles />} />
         <Route path='/articles/:id' element={<ArticleDetail />} /> */}
