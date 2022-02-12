@@ -22,6 +22,8 @@ import Articles from './components/spa-router/Articles';
 import ArticleDetail from './components/spa-router/ArticleDetail';
 import Layout from './components/spa-router/Layout';
 import NotFound from './components/spa-router/NotFound';
+import MyPage from './components/spa-router/MyPage';
+import Login from './components/spa-router/Login';
 
 const createBulkItems = () => {
   const array = [];
@@ -141,6 +143,10 @@ const App = () => {
 
         {/*  <Route path='/articles' element={<Articles />} />
         <Route path='/articles/:id' element={<ArticleDetail />} /> */}
+
+        {/* NOTE: Navigate 연습 */}
+        <Route path='/login' element={<Login />} />
+        <Route path='/mypage' element={<MyPage />} />
       </Routes>
     </div>
   );
