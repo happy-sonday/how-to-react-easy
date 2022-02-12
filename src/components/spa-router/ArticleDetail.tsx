@@ -1,16 +1,16 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import Articles from './Articles';
+import { Link, NavLink, useParams } from 'react-router-dom';
 
 const ArticleDetail = () => {
   // NOTE: Profile 예제와 동일
   const { id } = useParams();
-  return (
-    <div>
-      게시글 번호: {id}
-      <Articles />
-    </div>
-  );
+
+  const activeStyle = {
+    color: 'green',
+    fontSize: 21,
+  };
+
+  return <h1>게시글 {id}</h1>;
 };
 
 export default ArticleDetail;

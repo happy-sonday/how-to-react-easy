@@ -18,7 +18,6 @@ import ImmerPractice from './components/ImmerPractice';
 import { Route, Routes } from 'react-router-dom';
 import About from './components/spa-router/About';
 import SPAHome from './components/spa-router/SPAHome';
-import Profile from './components/spa-router/Profile';
 import Articles from './components/spa-router/Articles';
 import ArticleDetail from './components/spa-router/ArticleDetail';
 import Layout from './components/spa-router/Layout';
@@ -121,26 +120,24 @@ const App = () => {
       <UseReducerPractice />
       <UserReducerInput />
       <UseMemoAVG /> */}
-      <TodoTemp>
+      {/*    <TodoTemp>
         <TodoInsert onInsert={onInsert} />
         <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
-      </TodoTemp>
+      </TodoTemp> */}
 
       {/* <HighLight /> */}
-      <ImmerPractice />
+      {/* <ImmerPractice /> */}
       <Routes>
-        <Route element={<Layout />}>
-          <Route path='/home' element={<SPAHome />} />
+        <Route path='/' element={<Layout />}>
+          <Route index element={<SPAHome />} />
           <Route path='/about' element={<About />} />
-          {/* NOTE: 해당컴포넌트 useParams로 parameter의 value값에 접근할 수 있다. */}
-          {/* <Route path='/profile/:username' element={<Profile />} /> */}
         </Route>
-        {/* <Route path='/articles' element={<Articles />} />
-        <Route path='/articles/:id' element={<ArticleDetail />} /> */}
-        {/* 트리구조를 가진 라우터의 경우 Outlet태그 필수!! */}
         <Route path='/articles' element={<Articles />}>
           <Route path=':id' element={<ArticleDetail />} />
         </Route>
+
+        {/*  <Route path='/articles' element={<Articles />} />
+        <Route path='/articles/:id' element={<ArticleDetail />} /> */}
       </Routes>
     </div>
   );
