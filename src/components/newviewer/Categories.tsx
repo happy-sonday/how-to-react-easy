@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 interface Active {
@@ -15,7 +16,35 @@ const CategoriesBlock = styled.div`
     overflow-x: auto;
   }
 `;
-const Category = styled.div`
+// const Category = styled.div`
+//   font-size: 1.125rem;
+//   cursor: pointer;
+//   white-space: pre;
+//   text-decoration: none;
+//   color: inherit;
+//   padding-bottom: 0.25rem;
+
+//   &:hover {
+//     color: #495057;
+//   }
+
+//   ${(props: Active) =>
+//     props.active &&
+//     css`
+//       font-weight: 600;
+//       border-bottom: 2px solid #22b8cf;
+//       color: #22b8cf;
+//       &:hover {
+//         color: #3bc9db;
+//       }
+//     `}
+//   & + & {
+//     margin-left: 1rem;
+//   }
+// `;
+
+// NOTE: 특정 컴포넌트인 경우 소괄호 안에 해당 컴포넌트 파라미터로 넣는다.
+const Category = styled(NavLink)`
   font-size: 1.125rem;
   cursor: pointer;
   white-space: pre;
@@ -27,21 +56,18 @@ const Category = styled.div`
     color: #495057;
   }
 
-  ${(props: Active) =>
-    props.active &&
-    css`
-      font-weight: 600;
-      border-bottom: 2px solid #22b8cf;
-      color: #22b8cf;
-      &:hover {
-        color: #3bc9db;
-      }
-    `}
+  &.active {
+    font-weight: 600;
+    border-bottom: 2px solid #22b8cf;
+    color: #22b8cf;
+    &:hover {
+      color: #3bc9db;
+    }
+  }
   & + & {
     margin-left: 1rem;
   }
 `;
-
 const categories = [
   { name: 'all', text: '전체보기' },
   { name: 'business', text: '비즈니스' },
@@ -57,8 +83,8 @@ const Categories = ({ currentCategory, onSelect }: any) => {
       {categories.map((item) => (
         <Category
           key={item.name}
-          active={item.name === currentCategory}
-          onClick={() => onSelect(item.name)}
+          className={({ isActive }) => (isActive ? 'active' : undefined)}
+          to={item.name === 'all' ? '/' : `/${item.name}`}
         >
           {item.text}
         </Category>

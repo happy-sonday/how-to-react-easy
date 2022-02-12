@@ -32,8 +32,10 @@ const NewsList = ({ currentCategory }: any) => {
     const fetchData = async () => {
       setLoading(true);
       try {
+        const query =
+          currentCategory === 'all' ? '' : `&category=${currentCategory}`;
         const res = await axios.get(
-          `https://newsapi.org/v2/top-headlines?country=kr&apiKey=${process.env.REACT_APP_NEWS_API}`
+          `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=${process.env.REACT_APP_NEWS_API}`
         );
 
         setArticles(res.data.articles);
@@ -44,7 +46,7 @@ const NewsList = ({ currentCategory }: any) => {
     };
 
     fetchData();
-  }, []);
+  }, [currentCategory]);
 
   // const sampleArticle = {
   //   title: '제목',

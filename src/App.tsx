@@ -27,6 +27,7 @@ import Login from './components/spa-router/Login';
 import axios from 'axios';
 import NewsList from './components/newviewer/NewsList';
 import Categories from './components/newviewer/Categories';
+import NewsPage from './components/newviewer/NewsPage';
 
 const createBulkItems = () => {
   const array = [];
@@ -187,8 +188,13 @@ const App = () => {
           readOnly={true}
         ></textarea>
       )} */}
-      <Categories currentCategory={currentCategory} onSelect={onSelect} />
-      <NewsList currentCategory={currentCategory} />
+      {/* NOTE: router 적용 */}
+      {/* <Categories currentCategory={currentCategory} onSelect={onSelect} />
+      <NewsList currentCategory={currentCategory} /> */}
+      <Routes>
+        <Route path='/' element={<NewsPage />} />
+        <Route path='/:category' element={<NewsPage />} />
+      </Routes>
     </div>
   );
 };
