@@ -10,6 +10,7 @@ const NewsListBlock = styled.div`
   width: 768px;
   margin: 0 auto;
   margin-top: 2rem;
+
   @media screen and (max-width: 768px) {
     width: 100%;
     padding-left: 1rem;
@@ -23,7 +24,7 @@ const LoadingBlock = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 `;
-const NewsList = () => {
+const NewsList = ({ currentCategory }: any) => {
   const [articles, setArticles] = useState(null);
   const [loading, setLoading] = useState(false);
 

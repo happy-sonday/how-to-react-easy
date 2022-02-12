@@ -26,6 +26,7 @@ import MyPage from './components/spa-router/MyPage';
 import Login from './components/spa-router/Login';
 import axios from 'axios';
 import NewsList from './components/newviewer/NewsList';
+import Categories from './components/newviewer/Categories';
 
 const createBulkItems = () => {
   const array = [];
@@ -125,6 +126,11 @@ const App = () => {
     }
   };
 
+  const [currentCategory, setCurrentCategory] = useState('all');
+  const onSelect = useCallback((category) => {
+    setCurrentCategory(category);
+  }, []);
+
   return (
     <div>
       {/*       <Home fromParent={'컴포넌트속성전달'}>
@@ -181,7 +187,8 @@ const App = () => {
           readOnly={true}
         ></textarea>
       )} */}
-      <NewsList />
+      <Categories currentCategory={currentCategory} onSelect={onSelect} />
+      <NewsList currentCategory={currentCategory} />
     </div>
   );
 };
