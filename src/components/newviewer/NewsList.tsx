@@ -1,6 +1,8 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import NewsItem from './NewsItem';
+import ScaleLoader from 'react-spinners/ScaleLoader';
 
 const NewsListBlock = styled.div`
   box-sizing: border-box;
@@ -14,19 +16,60 @@ const NewsListBlock = styled.div`
     padding-right: 1rem;
   }
 `;
+
+const LoadingBlock = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
 const NewsList = () => {
-  const sampleArticle = {
-    title: '제목',
-    description: '내용',
-    url: 'https://google.com',
-    urlToImage: 'https://via.placeholder.com/160',
-  };
+  const [articles, setArticles] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const res = await axios.get(
+          `https://newsapi.org/v2/top-headlines?country=kr&apiKey=${process.env.REACT_APP_NEWS_API}`
+        );
+
+        setArticles(res.data.articles);
+      } catch (error) {
+        console.error(error);
+      }
+      setLoading(false);
+    };
+
+    fetchData();
+  }, []);
+
+  // const sampleArticle = {
+  //   title: '제목',
+  //   description: '내용',
+  //   url: 'https://google.com',
+  //   urlToImage: 'https://via.placeholder.com/160',
+  // };
+
+  // 로딩중일 때
+  if (loading) {
+    return (
+      <LoadingBlock>
+        <ScaleLoader height='160' width='32' color='#6b5ce7' radius='8' />
+      </LoadingBlock>
+    );
+  }
+
   return (
     <NewsListBlock>
-      <NewsItem article={sampleArticle} />
-      <NewsItem article={sampleArticle} />
-      <NewsItem article={sampleArticle} />
-      <NewsItem article={sampleArticle} />
+      {articles ? (
+        articles.map((article: any) => (
+          <NewsItem key={article.url} article={article} />
+        ))
+      ) : (
+        <h3>결과 없음</h3>
+      )}
     </NewsListBlock>
   );
 };
