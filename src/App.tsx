@@ -24,6 +24,8 @@ import Layout from './components/spa-router/Layout';
 import NotFound from './components/spa-router/NotFound';
 import MyPage from './components/spa-router/MyPage';
 import Login from './components/spa-router/Login';
+import axios from 'axios';
+import NewsList from './components/newviewer/NewsList';
 
 const createBulkItems = () => {
   const array = [];
@@ -102,6 +104,27 @@ const App = () => {
 
   const [visible, setVisible] = useState(false);
 
+  const [data, setData] = useState(null);
+  // const onClick = () => {
+  //   axios.get('https://jsonplaceholder.typicode.com/todos/1').then((res) => {
+  //     setData(res.data);
+  //   });
+  // };
+  const onClick = async () => {
+    // axios.get('https://jsonplaceholder.typicode.com/todos/1').then((res) => {
+    //   setData(res.data);
+    // });
+    try {
+      const res = await axios.get(
+        //'https://jsonplaceholder.typicode.com/todos/1'
+        `https://newsapi.org/v2/top-headlines?country=kr&apiKey=${process.env.REACT_APP_NEWS_API}`
+      );
+      setData(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div>
       {/*       <Home fromParent={'컴포넌트속성전달'}>
@@ -130,24 +153,35 @@ const App = () => {
 
       {/* <HighLight /> */}
       {/* <ImmerPractice /> */}
-      <Routes>
+      {/* TODO: Route 설정 예제 */}
+      {/* <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<SPAHome />} />
           <Route path='/about' element={<About />} />
         </Route>
         <Route path='/articles' element={<Articles />}>
           <Route path=':id' element={<ArticleDetail />} />
-        </Route>
-        {/* NOTE: 없는페이지 라우트 설정 */}
-        <Route path='*' element={<NotFound />} />
+        </Route> */}
+      {/* NOTE: 없는페이지 라우트 설정 */}
+      {/* <Route path='*' element={<NotFound />} /> */}
 
-        {/*  <Route path='/articles' element={<Articles />} />
+      {/*  <Route path='/articles' element={<Articles />} />
         <Route path='/articles/:id' element={<ArticleDetail />} /> */}
 
-        {/* NOTE: Navigate 연습 */}
-        <Route path='/login' element={<Login />} />
+      {/* NOTE: Navigate 연습 */}
+      {/* <Route path='/login' element={<Login />} />
         <Route path='/mypage' element={<MyPage />} />
-      </Routes>
+      </Routes> */}
+      {/* TODO: 비동기 API 처리 */}
+      {/* <button onClick={onClick}>불러오기</button>
+      {data && (
+        <textarea
+          rows={7}
+          value={JSON.stringify(data, null, 3)}
+          readOnly={true}
+        ></textarea>
+      )} */}
+      <NewsList />
     </div>
   );
 };
