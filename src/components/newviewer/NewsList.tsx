@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import NewsItem from './NewsItem';
 import ScaleLoader from 'react-spinners/ScaleLoader';
+import usePromise from '../../lib/usePromise';
 
 const NewsListBlock = styled.div`
   box-sizing: border-box;
@@ -24,36 +25,22 @@ const LoadingBlock = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 `;
+const ErrorBlock = styled.h1`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+`;
+
 const NewsList = ({ currentCategory }: any) => {
-  const [articles, setArticles] = useState(null);
-  const [loading, setLoading] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const query =
-          currentCategory === 'all' ? '' : `&category=${currentCategory}`;
-        const res = await axios.get(
-          `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=${process.env.REACT_APP_NEWS_API}`
-        );
-
-        setArticles(res.data.articles);
-      } catch (error) {
-        console.error(error);
-      }
-      setLoading(false);
-    };
-
-    fetchData();
+  const [loading, resolved, error] = usePromise(() => {
+    const query =
+      currentCategory === 'all' ? '' : `&category=${currentCategory}`;
+    return axios.get(
+      `https://newsapi.org/v2/top-headlines?country=kr${query}&apiKey=${process.env.REACT_APP_NEWS_API}`
+    );
   }, [currentCategory]);
-
-  // const sampleArticle = {
-  //   title: '제목',
-  //   description: '내용',
-  //   url: 'https://google.com',
-  //   urlToImage: 'https://via.placeholder.com/160',
-  // };
 
   // 로딩중일 때
   if (loading) {
@@ -64,6 +51,20 @@ const NewsList = ({ currentCategory }: any) => {
     );
   }
 
+  // 에러발생시
+  if (error)
+    return (
+      <ErrorBlock>
+        알수없는 에러 발생
+        <br /> 관리자에게 문의하세요:(
+      </ErrorBlock>
+    );
+
+  // NOTE: 초기 구동시 데이터 동기화 타이밍이 안맞아 null error 발생하므로 필요
+  if (!resolved) return null;
+
+  // 데이터 렌더링
+  const { articles } = resolved.data;
   return (
     <NewsListBlock>
       {articles ? (

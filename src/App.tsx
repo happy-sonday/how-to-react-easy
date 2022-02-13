@@ -28,6 +28,7 @@ import axios from 'axios';
 import NewsList from './components/newviewer/NewsList';
 import Categories from './components/newviewer/Categories';
 import NewsPage from './components/newviewer/NewsPage';
+import UsePromiseSample from './components/newviewer/UsePromiseSample';
 
 const createBulkItems = () => {
   const array = [];
